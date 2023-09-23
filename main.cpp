@@ -6,9 +6,8 @@ template<typename T>
 concept ComplexConcept = requires(const T v ) {
     {v.hash()}->std::convertible_to<long>;
     {v.toString()}->std::same_as<std::string>;
-    !std::has_virtual_destructor_v<T>;
     
-};
+} && !std::has_virtual_destructor_v<T>;
 
 class TestObject {
 public:
